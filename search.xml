@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>hexo博客代码</title>
-    <url>/2023/04/29/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E2%80%9C/</url>
-    <content><![CDATA[<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><hr>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>hexo博客代码</title>
+      <link href="/2023/04/29/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E2%80%9C/"/>
+      <url>/2023/04/29/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E2%80%9C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2>]]></content>
+      
+      
       <categories>
-        <category>数学建模</category>
+          
+          <category> 数学建模 </category>
+          
       </categories>
-      <tags>
-        <tag>hexo博客</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> hexo博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
