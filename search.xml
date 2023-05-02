@@ -1,279 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>STEP7(TIA Portal)编程语言</title>
-    <url>/2023/04/30/STEP7%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</url>
-    <content><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>常用编程语言</p>
-<ul>
-<li>梯形图(LAD) 与电气操作原理图相对应，具有直观性和对应性；与原有继电器控制相一致，电气设计人员易于掌握；</li>
-<li>功能块图(FBD) 图形化的高级编程语言，用函数的输入输出来描述函数。函数是由许多基本模组集合而成，在图上以区块来表示，各函数的输入及输出是由区块之间的连接线来连接；</li>
-<li>语句表(STL) 文本编程语言，类似于微机的汇编语言，适合经验丰富的程序员使用。</li>
-</ul>
-<hr>
-<p>CPU常用数据区介绍</p>
-<ul>
-<li><p>信号输入区 <strong>I</strong> </p>
-</li>
-<li><p>信号输出区 <strong>Q</strong></p>
-<p>  程序中的表现形式：I x.x / Q x.x ; IW x / QW X , 去过程映像区中读取存放的数值；</p>
-<p>  另一种表现形式：IW x:P / QW x:P , 直接访问信号模块的端口地址。</p>
-<p>  直接访问的方式有W都是对模拟量来说的，对数字量的信号，也可以直接访问相应模块端口：</p>
-<p>  IB x:P / QB x:P 按字节(8个位)来访问</p>
-<p>  IW x:P / QW x:P 按字(16个位)来访问</p>
-<p>  读取后，再放到CPU别的存储空间中:</p>
-<p>  MB x</p>
-<p>  MW x</p>
-<p>  那么就有</p>
-<p>  I x.y / Q x.y 对应 M x.y</p>
-</li>
-<li><p>位存储区 <strong>M</strong></p>
-</li>
-<li><p>定时器区 <strong>T</strong></p>
-</li>
-<li><p>计数器区 <strong>C</strong></p>
-<p>  程序中的表现形式：</p>
-<p>  M x.x ; MB x ; MW x ; MD x</p>
-<p>  T x （x指编号</p>
-<p>  C x （x同上</p>
-<p>  这三个存储区可以设置<strong>掉电保持功能</strong>：在CPU断电后，保持性存储区的数据不变。</p>
-</li>
-<li><p>数据块区 <strong>DB</strong></p>
-<p>  程序中的表现形式：</p>
-<p>  DBx.DBX x.x;</p>
-<p>  DBx.DBB x;</p>
-<p>  DBx.DBW x;</p>
-<p>  DBx.DBD x;</p>
-<p>  或者 DBx.yy （yy为变量的名称）</p>
-<hr>
-<h1 id="一、编程基本指令使用"><a href="#一、编程基本指令使用" class="headerlink" title="一、编程基本指令使用"></a>一、编程基本指令使用</h1></li>
-</ul>
-<p>每段程序必须存在输出；</p>
-<p>位逻辑指令（自上而下）:</p>
-<ul>
-<li>常开触点：变量为1时通，为0时断；</li>
-<li>常闭触点：与常闭触点相反；</li>
-<li>取反RLO：对逻辑运算结果RLO的状态取反；</li>
-<li>赋值/线圈：输出逻辑运算结果；</li>
-</ul>
-<p>选中指令按下F1即可查看指令功能；</p>
-<p>利用位逻辑指令搭建：</p>
-<ul>
-<li>与门：所有前置条件都为1，输出才为1，体现为串联；</li>
-<li>或门：任意一个前置条件为1，输出就为1，体现为并联；</li>
-</ul>
-<hr>
-<h2 id="边沿触发指令的功能使用"><a href="#边沿触发指令的功能使用" class="headerlink" title="边沿触发指令的功能使用"></a>边沿触发指令的功能使用</h2><p>什么是沿？</p>
-<p>经过<strong>一个扫描周期</strong>后，某个变量的值发生0到1的跳变，则称为<strong>一个</strong>上升沿；</p>
-<p>常见边沿触发指令，主要用于记数、置位/复位、满足条件后只需执行一次的事件；</p>
-<ul>
-<li>–|P|– ：扫描操作数的信号上升沿；</li>
-<li>–(P)– ：在信号上升沿置位操作数；<br>P_TRIG ：扫描RLO的信号上升沿； </li>
-</ul>
-<h1 id="二、编程常用指令使用"><a href="#二、编程常用指令使用" class="headerlink" title="二、编程常用指令使用"></a>二、编程常用指令使用</h1><h2 id="1、定时器指令功能使用"><a href="#1、定时器指令功能使用" class="headerlink" title="1、定时器指令功能使用"></a>1、定时器指令功能使用</h2><h3 id="TIA-Portal-中的定时器指令"><a href="#TIA-Portal-中的定时器指令" class="headerlink" title="TIA Portal 中的定时器指令"></a>TIA Portal 中的定时器指令</h3><ul>
-<li>IEC定时器 ：本质是FB程序块，使用时间变量的数据类型为Time</li>
-<li>S7定时器：可使用数量由CPU参数决定，使用时间变量的数据类型为S5Time</li>
-</ul>
-<h3 id="IEC定时器"><a href="#IEC定时器" class="headerlink" title="IEC定时器"></a>IEC定时器</h3><ul>
-<li>TON：生成接通延时定时器：<pre><code>  1、填写背景数据块；
-  2、填写参数：
-      - PT：接通延时的持续时间；
-      - ET：当前时间（非必须）；
-  效果：当前置变量为1时（只有输入为1时），接通演示定时器开始计时。经过PT时间后，输出接通，下一个变量为1；
-</code></pre>
-</li>
-</ul>
-<h3 id="S7定时器"><a href="#S7定时器" class="headerlink" title="S7定时器"></a>S7定时器</h3><ul>
-<li>S_ODT：分配接通延时定时器参数并启动：<pre><code>  1、填写参数：
-      - 指令上方填写定时器编号，如T1；
-      - S：启动输入；
-      - TV：接通延时的定时时间（类似于PT）；
-      - R：复位输入；
-      - Q：定时器状态；
-      - BI：当前时间（BI编码）；
-      - BCD：当前时间（BCD格式）；
-  效果：当S为1时，定时器启动，开始计时，经过TV时间后，输出接通为1；当R为1时，输出断开为0；
-</code></pre>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>IEC定时器</th>
-<th>S7定时器</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>延时时间为Time类型（32位），允许的延时时间长</td>
-<td>延时时间使用S5Time类型（16位），允许时间短</td>
-</tr>
-<tr>
-<td>本质为FB块，使用数量仅受CPU能够存放程序量大小限制</td>
-<td>受CPU参数明确限制</td>
-</tr>
-</tbody></table>
-<h2 id="2、计数器指令功能使用"><a href="#2、计数器指令功能使用" class="headerlink" title="2、计数器指令功能使用"></a>2、计数器指令功能使用</h2><h3 id="IEC计数器"><a href="#IEC计数器" class="headerlink" title="IEC计数器"></a>IEC计数器</h3><ul>
-<li>CTU：加计数器：<pre><code>  1、填写背景数据块；
-  2、填写参数：
-      - CU：计数输入；
-      - R：复位（非必须）；
-      - PV：置位输出Q的值；
-      - Q：计数器状态；
-      - CV：当前计数值；
-  效果：当CU端有一个上升沿时，CV计数值+1，每检测到一个上升沿，CV就+1，直到达到CV端数据类型的上限；若CV&gt;=PV，Q就置1，其他情况，Q均为0；当R端为1时，CV、Q端就会复位为0，只要R为1，CU端就不会影响该指令；
-</code></pre>
-</li>
-</ul>
-<h3 id="S7计数器"><a href="#S7计数器" class="headerlink" title="S7计数器"></a>S7计数器</h3><ul>
-<li>S_CU：分配参数并加计数：<pre><code>  1、填写参数：
-      - 指令上方填写计数器编号，如C1；
-      - CU：加计数输入；
-      - S：预制计数器的输入（非必须）；
-      - PV：预制计数器值（非必须）；
-      - R：复位输入（非必须）；
-      - Q：定时器状态；
-      - CV：当前计数器值（十六进制、非必须）；
-      - CV_BCD：当前计数器值（BCD格式、非必须）；
-  效果：当CU有一个上升沿时，则执行该指令，同时输出CV/CV_BCD的当前计数器值+1，每检测到一个上升沿，计数值+1，直到计数上限999；当S端由0变1时，将计数器值（CV_BCD/CV）设置为PV的值，如果CU端为1，即使没有检测到上升沿，计数器也会在下一个扫描周期相应地进行计数（因此，计数器值为PV+1）；计数器值&gt;0时，输出Q为1；计数器值=0时，输出Q为0；
-</code></pre>
-</li>
-</ul>
-<h2 id="3、触发器指令功能使用"><a href="#3、触发器指令功能使用" class="headerlink" title="3、触发器指令功能使用"></a>3、触发器指令功能使用</h2><ul>
-<li>SR触发器</li>
-<li>RS触发器</li>
-</ul>
-<h3 id="SR触发器"><a href="#SR触发器" class="headerlink" title="SR触发器"></a>SR触发器</h3><p>根据S和R1地信号状态，置位或者复位指定操作数的值；</p>
-<p>S用于输出置1，R1用于输出置0，R1优先级<strong>高于</strong>S，RS触发器则相反，它是S优先；</p>
-<p>如果S和R1均为0，则不会执行该指令；</p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>python 绘图</title>
+      <link href="/2023/05/02/python-%E7%BB%98%E5%9B%BE/"/>
+      <url>/2023/05/02/python-%E7%BB%98%E5%9B%BE/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python爬虫教程</title>
+      <link href="/2023/05/01/python%E7%88%AC%E8%99%AB%E6%95%99%E7%A8%8B/"/>
+      <url>/2023/05/01/python%E7%88%AC%E8%99%AB%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Day1-1"><a href="#Day1-1" class="headerlink" title="Day1.1"></a>Day1.1</h1><p>robots.txt 协议：指明可以爬取的内容；</p><p>网站/robots.txt 即可查找协议内容；</p><h1 id="Day1-2-http-https协议"><a href="#Day1-2-http-https协议" class="headerlink" title="Day1.2 http/https协议"></a>Day1.2 http/https协议</h1><p>http协议</p><ul><li>概念：服务器和客户端之间进行数据交互的一种形式。</li></ul><p>常用请求头信息：</p><ul><li>User_Agent: 请求载体的身份标识；（访问这个域名的设备信息和浏览器信息）</li><li>Connection: 请求完毕后，是断开连接还是保持连接</li></ul><p>常用响应头信息：</p><ul><li>Content-Type: 服务器响应回客户端的数据类型</li></ul><p>https协议</p><ul><li>安全的超文本传输协议</li></ul><p>加密方式</p><ul><li>对称密钥加密</li><li>非对称密钥加密</li><li>证书密钥加密</li></ul>]]></content>
+      
+      
       <categories>
-        <category>PLC编程</category>
+          
+          <category> 编程 </category>
+          
       </categories>
-      <tags>
-        <tag>PLC编程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python爬虫教程</title>
-    <url>/2023/05/01/python%E7%88%AC%E8%99%AB%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="Day1-1"><a href="#Day1-1" class="headerlink" title="Day1.1"></a>Day1.1</h1><p>robots.txt 协议：指明可以爬取的内容；</p>
-<p>网站/robots.txt 即可查找协议内容；</p>
-<h1 id="Day1-2-http-https协议"><a href="#Day1-2-http-https协议" class="headerlink" title="Day1.2 http/https协议"></a>Day1.2 http/https协议</h1><p>http协议</p>
-<ul>
-<li>概念：服务器和客户端之间进行数据交互的一种形式。</li>
-</ul>
-<p>常用请求头信息：</p>
-<ul>
-<li>User_Agent: 请求载体的身份标识；（访问这个域名的设备信息和浏览器信息）</li>
-<li>Connection: 请求完毕后，是断开连接还是保持连接</li>
-</ul>
-<p>常用响应头信息：</p>
-<ul>
-<li>Content-Type: 服务器响应回客户端的数据类型</li>
-</ul>
-<p>https协议</p>
-<ul>
-<li>安全的超文本传输协议</li>
-</ul>
-<p>加密方式</p>
-<ul>
-<li>对称密钥加密</li>
-<li>非对称密钥加密</li>
-<li>证书密钥加密</li>
-</ul>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>STEP7(TIA Portal)编程语言</title>
+      <link href="/2023/04/30/STEP7%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+      <url>/2023/04/30/STEP7%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</url>
+      
+        <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>常用编程语言</p><ul><li>梯形图(LAD) 与电气操作原理图相对应，具有直观性和对应性；与原有继电器控制相一致，电气设计人员易于掌握；</li><li>功能块图(FBD) 图形化的高级编程语言，用函数的输入输出来描述函数。函数是由许多基本模组集合而成，在图上以区块来表示，各函数的输入及输出是由区块之间的连接线来连接；</li><li>语句表(STL) 文本编程语言，类似于微机的汇编语言，适合经验丰富的程序员使用。</li></ul><hr><p>CPU常用数据区介绍</p><ul><li><p>信号输入区 <strong>I</strong> </p></li><li><p>信号输出区 <strong>Q</strong></p><p>  程序中的表现形式：I x.x / Q x.x ; IW x / QW X , 去过程映像区中读取存放的数值；</p><p>  另一种表现形式：IW x:P / QW x:P , 直接访问信号模块的端口地址。</p><p>  直接访问的方式有W都是对模拟量来说的，对数字量的信号，也可以直接访问相应模块端口：</p><p>  IB x:P / QB x:P 按字节(8个位)来访问</p><p>  IW x:P / QW x:P 按字(16个位)来访问</p><p>  读取后，再放到CPU别的存储空间中:</p><p>  MB x</p><p>  MW x</p><p>  那么就有</p><p>  I x.y / Q x.y 对应 M x.y</p></li><li><p>位存储区 <strong>M</strong></p></li><li><p>定时器区 <strong>T</strong></p></li><li><p>计数器区 <strong>C</strong></p><p>  程序中的表现形式：</p><p>  M x.x ; MB x ; MW x ; MD x</p><p>  T x （x指编号</p><p>  C x （x同上</p><p>  这三个存储区可以设置<strong>掉电保持功能</strong>：在CPU断电后，保持性存储区的数据不变。</p></li><li><p>数据块区 <strong>DB</strong></p><p>  程序中的表现形式：</p><p>  DBx.DBX x.x;</p><p>  DBx.DBB x;</p><p>  DBx.DBW x;</p><p>  DBx.DBD x;</p><p>  或者 DBx.yy （yy为变量的名称）</p><hr><h1 id="一、编程基本指令使用"><a href="#一、编程基本指令使用" class="headerlink" title="一、编程基本指令使用"></a>一、编程基本指令使用</h1></li></ul><p>每段程序必须存在输出；</p><p>位逻辑指令（自上而下）:</p><ul><li>常开触点：变量为1时通，为0时断；</li><li>常闭触点：与常闭触点相反；</li><li>取反RLO：对逻辑运算结果RLO的状态取反；</li><li>赋值/线圈：输出逻辑运算结果；</li></ul><p>选中指令按下F1即可查看指令功能；</p><p>利用位逻辑指令搭建：</p><ul><li>与门：所有前置条件都为1，输出才为1，体现为串联；</li><li>或门：任意一个前置条件为1，输出就为1，体现为并联；</li></ul><hr><h2 id="边沿触发指令的功能使用"><a href="#边沿触发指令的功能使用" class="headerlink" title="边沿触发指令的功能使用"></a>边沿触发指令的功能使用</h2><p>什么是沿？</p><p>经过<strong>一个扫描周期</strong>后，某个变量的值发生0到1的跳变，则称为<strong>一个</strong>上升沿；</p><p>常见边沿触发指令，主要用于记数、置位/复位、满足条件后只需执行一次的事件；</p><ul><li>–|P|– ：扫描操作数的信号上升沿；</li><li>–(P)– ：在信号上升沿置位操作数；<br>P_TRIG ：扫描RLO的信号上升沿； </li></ul><h1 id="二、编程常用指令使用"><a href="#二、编程常用指令使用" class="headerlink" title="二、编程常用指令使用"></a>二、编程常用指令使用</h1><h2 id="1、定时器指令功能使用"><a href="#1、定时器指令功能使用" class="headerlink" title="1、定时器指令功能使用"></a>1、定时器指令功能使用</h2><h3 id="TIA-Portal-中的定时器指令"><a href="#TIA-Portal-中的定时器指令" class="headerlink" title="TIA Portal 中的定时器指令"></a>TIA Portal 中的定时器指令</h3><ul><li>IEC定时器 ：本质是FB程序块，使用时间变量的数据类型为Time</li><li>S7定时器：可使用数量由CPU参数决定，使用时间变量的数据类型为S5Time</li></ul><h3 id="IEC定时器"><a href="#IEC定时器" class="headerlink" title="IEC定时器"></a>IEC定时器</h3><ul><li>TON：生成接通延时定时器：<pre><code>  1、填写背景数据块；  2、填写参数：      - PT：接通延时的持续时间；      - ET：当前时间（非必须）；  效果：当前置变量为1时（只有输入为1时），接通演示定时器开始计时。经过PT时间后，输出接通，下一个变量为1；</code></pre></li></ul><h3 id="S7定时器"><a href="#S7定时器" class="headerlink" title="S7定时器"></a>S7定时器</h3><ul><li>S_ODT：分配接通延时定时器参数并启动：<pre><code>  1、填写参数：      - 指令上方填写定时器编号，如T1；      - S：启动输入；      - TV：接通延时的定时时间（类似于PT）；      - R：复位输入；      - Q：定时器状态；      - BI：当前时间（BI编码）；      - BCD：当前时间（BCD格式）；  效果：当S为1时，定时器启动，开始计时，经过TV时间后，输出接通为1；当R为1时，输出断开为0；</code></pre></li></ul><table><thead><tr><th>IEC定时器</th><th>S7定时器</th></tr></thead><tbody><tr><td>延时时间为Time类型（32位），允许的延时时间长</td><td>延时时间使用S5Time类型（16位），允许时间短</td></tr><tr><td>本质为FB块，使用数量仅受CPU能够存放程序量大小限制</td><td>受CPU参数明确限制</td></tr></tbody></table><h2 id="2、计数器指令功能使用"><a href="#2、计数器指令功能使用" class="headerlink" title="2、计数器指令功能使用"></a>2、计数器指令功能使用</h2><h3 id="IEC计数器"><a href="#IEC计数器" class="headerlink" title="IEC计数器"></a>IEC计数器</h3><ul><li>CTU：加计数器：<pre><code>  1、填写背景数据块；  2、填写参数：      - CU：计数输入；      - R：复位（非必须）；      - PV：置位输出Q的值；      - Q：计数器状态；      - CV：当前计数值；  效果：当CU端有一个上升沿时，CV计数值+1，每检测到一个上升沿，CV就+1，直到达到CV端数据类型的上限；若CV&gt;=PV，Q就置1，其他情况，Q均为0；当R端为1时，CV、Q端就会复位为0，只要R为1，CU端就不会影响该指令；</code></pre></li></ul><h3 id="S7计数器"><a href="#S7计数器" class="headerlink" title="S7计数器"></a>S7计数器</h3><ul><li>S_CU：分配参数并加计数：<pre><code>  1、填写参数：      - 指令上方填写计数器编号，如C1；      - CU：加计数输入；      - S：预制计数器的输入（非必须）；      - PV：预制计数器值（非必须）；      - R：复位输入（非必须）；      - Q：定时器状态；      - CV：当前计数器值（十六进制、非必须）；      - CV_BCD：当前计数器值（BCD格式、非必须）；  效果：当CU有一个上升沿时，则执行该指令，同时输出CV/CV_BCD的当前计数器值+1，每检测到一个上升沿，计数值+1，直到计数上限999；当S端由0变1时，将计数器值（CV_BCD/CV）设置为PV的值，如果CU端为1，即使没有检测到上升沿，计数器也会在下一个扫描周期相应地进行计数（因此，计数器值为PV+1）；计数器值&gt;0时，输出Q为1；计数器值=0时，输出Q为0；</code></pre></li></ul><h2 id="3、触发器指令功能使用"><a href="#3、触发器指令功能使用" class="headerlink" title="3、触发器指令功能使用"></a>3、触发器指令功能使用</h2><ul><li>SR触发器</li><li>RS触发器</li></ul><h3 id="SR触发器"><a href="#SR触发器" class="headerlink" title="SR触发器"></a>SR触发器</h3><p>根据S和R1地信号状态，置位或者复位指定操作数的值；</p><p>S用于输出置1，R1用于输出置0，R1优先级<strong>高于</strong>S，RS触发器则相反，它是S优先；</p><p>如果S和R1均为0，则不会执行该指令；</p>]]></content>
+      
+      
       <categories>
-        <category>编程</category>
+          
+          <category> PLC编程 </category>
+          
       </categories>
-      <tags>
-        <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数学建模————数据预处理</title>
-    <url>/2023/04/29/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E2%80%9C/</url>
-    <content><![CDATA[<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><p>一定要进行数据预处理，即使数据无异常；<br>数据预处理：数据清洗，数据集成，数据变换和数据规约。<br>1、数据清洗：去掉数据中的噪声，纠正不一致，</p>
-<p>缺失值处理：删除记录、<strong>数据插补</strong>、不处理</p>
-<table>
-<thead>
-<tr>
-<th>插补方法</th>
-<th>方法描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>均值/中位数/众数插补</td>
-<td>根据属性值的类型，用该属性取值的平均数/中位数/众数来进行插补</td>
-</tr>
-<tr>
-<td>使用固定值</td>
-<td>缺失的属性值用一个常量替换</td>
-</tr>
-<tr>
-<td>最近临插补</td>
-<td>在记录中找到与缺失样本最接近的样本的该属性值插补（可以使用欧几里得距离）</td>
-</tr>
-<tr>
-<td>回归方法</td>
-<td>对带有缺失值的变量，根据已有数据和与其相关的其他变量（因变量）的数据建立拟合模型来预测缺失的属性值</td>
-</tr>
-<tr>
-<td><strong>插值法</strong></td>
-<td>插值法是利用已知点建立合适的插值函数，未知值由对应点求出的函数值来近似代替</td>
-</tr>
-</tbody></table>
-<p>插值法：拉格朗日插值、牛顿插值；</p>
-<p>异常值处理：</p>
-<table>
-<thead>
-<tr>
-<th>异常值处理方法</th>
-<th>方法描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>删除含有异常值的记录</td>
-<td>直接将含有异常值的记录删除</td>
-</tr>
-<tr>
-<td>视为缺失值</td>
-<td>将异常值视为缺失值，利用缺失值处理的方法进行处理</td>
-</tr>
-<tr>
-<td>平均值修正</td>
-<td>可用前后两个观测值的平均值修正该异常值</td>
-</tr>
-<tr>
-<td>不处理</td>
-<td>直接在具有异常值的数据集上进行挖掘建模</td>
-</tr>
-</tbody></table>
-<p>异常值的判断：</p>
-<ul>
-<li>如果数据符合正态分布，则可以用3σ原则进行判断；</li>
-<li>还可以使用箱型图进行判断，对于多为数据可以采用<strong>较为定量的方法</strong>（老哥数模P23 55:52）；</li>
-</ul>
-<p>2、数据集成：将多个数据源合并，构成一个完整的数据集；</p>
-<p>3、数据变换：将一种格式的数据转换为另一种格式的数据，使数据保持完美的正态分布，这样用中位数还是平均数来描述数据不会有太大差别，例如简单的函数变换；</p>
-<p>数据变换还可利用归一化：数据数量级差异较大时可以进行归一化，进行机器学习时也需要。</p>
-<p><img src="/images/%E5%BD%92%E4%B8%80%E5%8C%96.jpg" alt="归一化的方式"></p>
-<p>4、数据规约：通过聚集、删除冗余属性或聚类等方法来压缩数据。</p>
-<p>特征工程：从原始数据提取特征的过程，这些特征能很好地描述数据，并且利用特征建立的模型在未知的数据上的性能表现可以达到最优（或接近最佳性能）。</p>
-<p>特征工程包括：特征使用、特征获取、特征处理、特征选择和特征监控。</p>
-<p>先进行特征处理，筛选掉无用特征，接着去除冗余特征，再进行数据处理。</p>
-<p>特征选择的方法：</p>
-<ul>
-<li>过滤法：按照发散性或者相关性对各个特征进行评分，通过设定阈值或待选择阈的个数来选择特征；</li>
-<li>包装法：根据目标函数每次选择若干特征或者排除若干特征</li>
-<li>嵌入法：使用机器学习的某些算法和模型进行训练，得到各个特征的权值系数，并根据系数从大到小选择特征</li>
-</ul>
-<p>可利用主成分分析进行数据降维；</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> PLC编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数学建模————数据预处理</title>
+      <link href="/2023/04/29/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E2%80%9C/"/>
+      <url>/2023/04/29/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E2%80%9C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><p>一定要进行数据预处理，即使数据无异常；<br>数据预处理：数据清洗，数据集成，数据变换和数据规约。<br>1、数据清洗：去掉数据中的噪声，纠正不一致，</p><p>缺失值处理：删除记录、<strong>数据插补</strong>、不处理</p><table><thead><tr><th>插补方法</th><th>方法描述</th></tr></thead><tbody><tr><td>均值/中位数/众数插补</td><td>根据属性值的类型，用该属性取值的平均数/中位数/众数来进行插补</td></tr><tr><td>使用固定值</td><td>缺失的属性值用一个常量替换</td></tr><tr><td>最近临插补</td><td>在记录中找到与缺失样本最接近的样本的该属性值插补（可以使用欧几里得距离）</td></tr><tr><td>回归方法</td><td>对带有缺失值的变量，根据已有数据和与其相关的其他变量（因变量）的数据建立拟合模型来预测缺失的属性值</td></tr><tr><td><strong>插值法</strong></td><td>插值法是利用已知点建立合适的插值函数，未知值由对应点求出的函数值来近似代替</td></tr></tbody></table><p>插值法：拉格朗日插值、牛顿插值；</p><p>异常值处理：</p><table><thead><tr><th>异常值处理方法</th><th>方法描述</th></tr></thead><tbody><tr><td>删除含有异常值的记录</td><td>直接将含有异常值的记录删除</td></tr><tr><td>视为缺失值</td><td>将异常值视为缺失值，利用缺失值处理的方法进行处理</td></tr><tr><td>平均值修正</td><td>可用前后两个观测值的平均值修正该异常值</td></tr><tr><td>不处理</td><td>直接在具有异常值的数据集上进行挖掘建模</td></tr></tbody></table><p>异常值的判断：</p><ul><li>如果数据符合正态分布，则可以用3σ原则进行判断；</li><li>还可以使用箱型图进行判断，对于多为数据可以采用<strong>较为定量的方法</strong>（老哥数模P23 55:52）；</li></ul><p>2、数据集成：将多个数据源合并，构成一个完整的数据集；</p><p>3、数据变换：将一种格式的数据转换为另一种格式的数据，使数据保持完美的正态分布，这样用中位数还是平均数来描述数据不会有太大差别，例如简单的函数变换；</p><p>数据变换还可利用归一化：数据数量级差异较大时可以进行归一化，进行机器学习时也需要。</p><p><img src="/images/%E5%BD%92%E4%B8%80%E5%8C%96.jpg" alt="归一化的方式"></p><p>4、数据规约：通过聚集、删除冗余属性或聚类等方法来压缩数据。</p><p>特征工程：从原始数据提取特征的过程，这些特征能很好地描述数据，并且利用特征建立的模型在未知的数据上的性能表现可以达到最优（或接近最佳性能）。</p><p>特征工程包括：特征使用、特征获取、特征处理、特征选择和特征监控。</p><p>先进行特征处理，筛选掉无用特征，接着去除冗余特征，再进行数据处理。</p><p>特征选择的方法：</p><ul><li>过滤法：按照发散性或者相关性对各个特征进行评分，通过设定阈值或待选择阈的个数来选择特征；</li><li>包装法：根据目标函数每次选择若干特征或者排除若干特征</li><li>嵌入法：使用机器学习的某些算法和模型进行训练，得到各个特征的权值系数，并根据系数从大到小选择特征</li></ul><p>可利用主成分分析进行数据降维；</p>]]></content>
+      
+      
       <categories>
-        <category>数学建模</category>
+          
+          <category> 数学建模 </category>
+          
       </categories>
-      <tags>
-        <tag>数据处理</tag>
-        <tag>数学建模</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 数据处理 </tag>
+            
+            <tag> 数学建模 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
