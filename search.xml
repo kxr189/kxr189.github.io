@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python爬虫教程</title>
+    <url>/2023/05/01/python%E7%88%AC%E8%99%AB%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="Day1-1"><a href="#Day1-1" class="headerlink" title="Day1.1"></a>Day1.1</h1><p>robots.txt 协议：指明可以爬取的内容；</p>
+<p>网站/robots.txt 即可查找协议内容；</p>
+<h1 id="Day1-2-http-https协议"><a href="#Day1-2-http-https协议" class="headerlink" title="Day1.2 http/https协议"></a>Day1.2 http/https协议</h1><p>http协议</p>
+<ul>
+<li>概念：服务器和客户端之间进行数据交互的一种形式。</li>
+</ul>
+<p>常用请求头信息：</p>
+<ul>
+<li>User_Agent: 请求载体的身份标识；（访问这个域名的设备信息和浏览器信息）</li>
+<li>Connection: 请求完毕后，是断开连接还是保持连接</li>
+</ul>
+<p>常用响应头信息：</p>
+<ul>
+<li>Content-Type: 服务器响应回客户端的数据类型</li>
+</ul>
+<p>https协议</p>
+<ul>
+<li>安全的超文本传输协议</li>
+</ul>
+<p>加密方式</p>
+<ul>
+<li>对称密钥加密</li>
+<li>非对称密钥加密</li>
+<li>证书密钥加密</li>
+</ul>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>STEP7(TIA Portal)编程语言</title>
     <url>/2023/04/30/STEP7%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</url>
     <content><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>常用编程语言</p>
@@ -230,6 +266,8 @@
 <li><p>结构化逻辑编程的实现：</p>
 </li>
 </ul>
+<h1 id="三、电梯控制系统结构与环境搭建"><a href="#三、电梯控制系统结构与环境搭建" class="headerlink" title="三、电梯控制系统结构与环境搭建"></a>三、电梯控制系统结构与环境搭建</h1><h2 id="1、电梯控制系统结构"><a href="#1、电梯控制系统结构" class="headerlink" title="1、电梯控制系统结构"></a>1、电梯控制系统结构</h2><p>控制器&lt;–信号连接–&gt;被控对象</p>
+<h2 id="2、电梯控制项目环境的搭建"><a href="#2、电梯控制项目环境的搭建" class="headerlink" title="2、电梯控制项目环境的搭建"></a>2、电梯控制项目环境的搭建</h2><p>设备与设备之间是通过以太网连接的，即使软件都布置在一个电脑上</p>
 ]]></content>
       <categories>
         <category>PLC编程</category>
@@ -242,42 +280,6 @@
     <title>python 绘图</title>
     <url>/2023/05/02/python-%E7%BB%98%E5%9B%BE/</url>
     <content><![CDATA[]]></content>
-      <tags>
-        <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python爬虫教程</title>
-    <url>/2023/05/01/python%E7%88%AC%E8%99%AB%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="Day1-1"><a href="#Day1-1" class="headerlink" title="Day1.1"></a>Day1.1</h1><p>robots.txt 协议：指明可以爬取的内容；</p>
-<p>网站/robots.txt 即可查找协议内容；</p>
-<h1 id="Day1-2-http-https协议"><a href="#Day1-2-http-https协议" class="headerlink" title="Day1.2 http/https协议"></a>Day1.2 http/https协议</h1><p>http协议</p>
-<ul>
-<li>概念：服务器和客户端之间进行数据交互的一种形式。</li>
-</ul>
-<p>常用请求头信息：</p>
-<ul>
-<li>User_Agent: 请求载体的身份标识；（访问这个域名的设备信息和浏览器信息）</li>
-<li>Connection: 请求完毕后，是断开连接还是保持连接</li>
-</ul>
-<p>常用响应头信息：</p>
-<ul>
-<li>Content-Type: 服务器响应回客户端的数据类型</li>
-</ul>
-<p>https协议</p>
-<ul>
-<li>安全的超文本传输协议</li>
-</ul>
-<p>加密方式</p>
-<ul>
-<li>对称密钥加密</li>
-<li>非对称密钥加密</li>
-<li>证书密钥加密</li>
-</ul>
-]]></content>
-      <categories>
-        <category>编程</category>
-      </categories>
       <tags>
         <tag>编程</tag>
       </tags>
