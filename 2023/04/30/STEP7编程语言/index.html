@@ -29,7 +29,7 @@
 <meta property="og:description" content="PLC学习笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-30T12:20:58.000Z">
-<meta property="article:modified_time" content="2023-05-01T13:22:34.107Z">
+<meta property="article:modified_time" content="2023-05-03T09:20:37.379Z">
 <meta property="article:author" content="kxr189">
 <meta property="article:tag" content="PLC编程">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%BC%96%E7%A8%8B%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">一、编程基本指令使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E6%B2%BF%E8%A7%A6%E5%8F%91%E6%8C%87%E4%BB%A4%E7%9A%84%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8"><span class="nav-number">2.1.</span> <span class="nav-text">边沿触发指令的功能使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%BC%96%E7%A8%8B%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">二、编程常用指令使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%AE%9A%E6%97%B6%E5%99%A8%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8"><span class="nav-number">3.1.</span> <span class="nav-text">1、定时器指令功能使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TIA-Portal-%E4%B8%AD%E7%9A%84%E5%AE%9A%E6%97%B6%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">3.1.1.</span> <span class="nav-text">TIA Portal 中的定时器指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IEC%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">3.1.2.</span> <span class="nav-text">IEC定时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S7%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">3.1.3.</span> <span class="nav-text">S7定时器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E8%AE%A1%E6%95%B0%E5%99%A8%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">2、计数器指令功能使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IEC%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-number">3.2.1.</span> <span class="nav-text">IEC计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S7%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-number">3.2.2.</span> <span class="nav-text">S7计数器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E8%A7%A6%E5%8F%91%E5%99%A8%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8"><span class="nav-number">3.3.</span> <span class="nav-text">3、触发器指令功能使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SR%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="nav-number">3.3.1.</span> <span class="nav-text">SR触发器</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%BC%96%E7%A8%8B%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">一、编程基本指令使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E6%B2%BF%E8%A7%A6%E5%8F%91%E6%8C%87%E4%BB%A4%E7%9A%84%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8"><span class="nav-number">2.1.</span> <span class="nav-text">边沿触发指令的功能使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%BC%96%E7%A8%8B%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">二、编程常用指令使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%AE%9A%E6%97%B6%E5%99%A8%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8"><span class="nav-number">3.1.</span> <span class="nav-text">1、定时器指令功能使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TIA-Portal-%E4%B8%AD%E7%9A%84%E5%AE%9A%E6%97%B6%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">3.1.1.</span> <span class="nav-text">TIA Portal 中的定时器指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IEC%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">3.1.2.</span> <span class="nav-text">IEC定时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S7%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">3.1.3.</span> <span class="nav-text">S7定时器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E8%AE%A1%E6%95%B0%E5%99%A8%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">2、计数器指令功能使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IEC%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-number">3.2.1.</span> <span class="nav-text">IEC计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S7%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-number">3.2.2.</span> <span class="nav-text">S7计数器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E8%A7%A6%E5%8F%91%E5%99%A8%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8"><span class="nav-number">3.3.</span> <span class="nav-text">3、触发器指令功能使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SR%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="nav-number">3.3.1.</span> <span class="nav-text">SR触发器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.4.</span> <span class="nav-text">4、数据类型转换指令的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E7%BB%93%E6%9E%84%E5%8C%96%E9%80%BB%E8%BE%91%E7%BC%96%E7%A8%8B"><span class="nav-number">3.5.</span> <span class="nav-text">5、结构化逻辑编程</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -250,7 +250,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-01 21:22:34" itemprop="dateModified" datetime="2023-05-01T21:22:34+08:00">2023-05-01</time>
+      <time title="修改时间：2023-05-03 17:20:37" itemprop="dateModified" datetime="2023-05-03T17:20:37+08:00">2023-05-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -421,6 +421,92 @@
 <h3 id="SR触发器"><a href="#SR触发器" class="headerlink" title="SR触发器"></a>SR触发器</h3><p>根据S和R1地信号状态，置位或者复位指定操作数的值；</p>
 <p>S用于输出置1，R1用于输出置0，R1优先级<strong>高于</strong>S，RS触发器则相反，它是S优先；</p>
 <p>如果S和R1均为0，则不会执行该指令；</p>
+<h2 id="4、数据类型转换指令的使用"><a href="#4、数据类型转换指令的使用" class="headerlink" title="4、数据类型转换指令的使用"></a>4、数据类型转换指令的使用</h2><ul>
+<li>32位的数据类型：<ul>
+<li>DWORD 双字 二进制存储 全是数据位 0~2^32-1 无符号、无法比较大小</li>
+<li>DINT  双整数 最高位是符号位 其余才是数据位 0~2^31-1</li>
+<li>REAL  浮点数/实数 最高位是符号位，接下来八个位是指数位，剩下的是尾数位 有符号、精度高</li>
+<li>TIME  IEC时间 最高位是符号位 数据范围：24天23小时59分59秒……</li>
+</ul>
+</li>
+<li>16位的数据类型：<ul>
+<li>WORD 字 无符号，无法比较大小</li>
+<li>INT 整数 带符号</li>
+<li>S5TIME 持续时间 最高两位是无关位，次高的两位是时基<ul>
+<li>10ms-00</li>
+<li>100ms-01</li>
+<li>1s-10</li>
+<li>10s-11</li>
+<li>剩下的位BCD格式的时间值</li>
+<li>时间计算：时基*BCD格式位的值</li>
+<li>时基是自适应的，不用自己填写</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据类型转换指令：<ul>
+<li>CONVERT:转换值 下面俩参数填地址</li>
+<li>SCALE:缩放（用于AI模块读值处理）<ul>
+<li>BIPOLAR:”0” 单极性 “1”双极性</li>
+<li>HI_LIM:上限</li>
+<li>LO_LIM:下限</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="5、结构化逻辑编程"><a href="#5、结构化逻辑编程" class="headerlink" title="5、结构化逻辑编程"></a>5、结构化逻辑编程</h2><ul>
+<li>组织块OB<ul>
+<li>OB是CPU的操作系统与用户程序之间的接口；</li>
+<li>CPU系统自动执行，无需调用；</li>
+<li>不同类型的OB具有不同的执行触发条件；</li>
+<li>具有优先级的区别，优先级数字越小，优先级越低；</li>
+<li>类型：<ul>
+<li>循环OB：主程序，主循环；<ul>
+<li>特点：COU启动后自动执行，优先级为1最低，循环时间不固定；</li>
+<li>默认编号:OB1</li>
+</ul>
+</li>
+<li>启动OB：初始化程序块；<ul>
+<li>特点：在输入过程映像区之前，只执行一次，通常在其中编写初始化功能的程序；</li>
+<li>默认编号:OB100</li>
+</ul>
+</li>
+<li>循环中断OB<ul>
+<li>自动执行，按照设置的时间参数循环执行，优先级高于循环OB，循环中断OB的程序执行时间必须小于循环间隔时间；</li>
+<li>默认编号:OB30</li>
+</ul>
+</li>
+<li>以下两种OB会在硬件或程序故障时自动执行，每次故障仅执行一次，具有较高优先级<ul>
+<li>硬件中断OB<ul>
+<li>默认编号:OB40</li>
+</ul>
+</li>
+<li>I/O访问错误OB<ul>
+<li>默认编号:OB122</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>函数块FB</li>
+<li>函数FC</li>
+</ul>
+<p>以上两种最终都需要OB调用才能执行，</p>
+<p>区别：</p>
+<pre><code>1、FB调用执行时需要创建生成相应的背景数据块；
+2、FC执行时如需要中间变量，使用的是临时变量区；
+3、FB执行时如需要中间变量，可以使用自带的背景数据块；
+</code></pre>
+<ul>
+<li><p>数据块DB</p>
+</li>
+<li><p>结构化逻辑编程的实现：</p>
+</li>
+</ul>
 
     </div>
 
